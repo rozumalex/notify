@@ -12,7 +12,7 @@ async def request_account_middleware(app, handler):
         request.account = None
         account_id = request.session.get('account_id')
         if account_id is not None:
-            request.account = Account(await db.get_account_by_id(app.db, account_id))
+            request.account = await db.get_account_by_id(app.pool, account_id)
         return await handler(request)
     return middleware
 

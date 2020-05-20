@@ -105,16 +105,16 @@ class Account:
         else:
             raise InvalidPasswordError
 
-    async def create(self, conn):
-        return await db.create_account(conn, self)
+    async def create(self, pool):
+        return await db.create_account(pool, self)
 
-    async def update_personal_info(self, conn, data):
+    async def update_personal_info(self, pool, data):
         self.full_name = data['full_name']
         self.phone = data['phone']
-        return await db.update_account(conn, self)
+        return await db.update_account(pool, self)
 
-    async def delete(self, conn, data):
+    async def delete(self, pool, data):
         if data['confirm'] != 'DELETE':
             raise ConfirmationError
         self.check_password(data['password'])
-        return await db.delete_account(conn, self.id)
+        return await db.delete_account(pool, self.id)

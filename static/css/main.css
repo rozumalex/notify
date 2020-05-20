@@ -305,21 +305,3 @@ background: linear-gradient(355deg, rgba(255,98,0,1) 0%, rgba(255,126,46,1) 100%
 	top: 10px;
 	right: 10px;
 }
-
-
-
-
-
-
-
-
-.big-button{
-	height: 150px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
-
-.big-button i{
-	font-size: 2em;
-}

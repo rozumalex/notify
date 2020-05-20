@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% set title = 'profile' %}
+
+{% block content %}
+    <section>
+
+      <header>
+        <h1>{{ title }}</h1>
+      </header>
+
+        <div class="row">
+
+
+
+                           {% if account.full_name %}
+                           {{ account.full_name }}
+                           {% endif %}
+
+                           {% if account.phone %}
+                           {{ account.phone }}
+                           {% endif %}
+        </div>
+
+
+
+
+    </section>
+
+{% endblock %}
