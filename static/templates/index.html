@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% set title = 'main' %}
+
+
+{% block content %}
+    {% if session %}
+    <section>
+
+      <header>
+        <h1>{{ title }}</h1>
+      </header>
+        <div class="tabs">
+
+            <nav class="tabs-nav">
+                <a class="active">my tasks</a>
+            </nav>
+
+            <div class="tab active">
+        		<a href="/new_task" class="success button big-button"><i class="fas fa-plus"></i></a>
+            </div>
+            
+        </div>
+    </section>
+
+    {% else %}
+    <section class="banner">
+
+      <hgroup>
+        <h2>{{ app.config['site']['site_name'] }}</h2>
+        <h3>Collect your data</h3>
+      </hgroup>
+
+            <form action="/signup" method="post">
+                <input type="email" name="email" placeholder="email">
+                <input type="password" name="password" placeholder="password">
+                <input type="submit" value="signup" class="success">
+            </form>
+    </section>
+    {% endif %}
+{% endblock %}

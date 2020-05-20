@@ -1,0 +1,17 @@
+@media (max-width: 640px){
+
+	section{
+		padding-right: 0;
+		padding-left: 0;
+	}
+
+	.tabs nav a:first-child{
+		margin-left: 20px;
+	}
+
+
+	.banner hgroup{
+		text-align: center;
+	}
+
+}

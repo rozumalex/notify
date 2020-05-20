@@ -1,0 +1,325 @@
+body{
+	width: 100%;
+	background-color: #fcfcfc;
+}
+
+/* #############################################
+#################### header ####################
+############################################# */
+
+header{
+	display: flex;
+	align-content: center;
+	width: 100%;
+}
+
+header nav{
+	display: flex;
+	width: 100%;
+	padding: 0 10px;
+	box-shadow: 0 10px 5px 0 rgba(50, 50, 50, 0.5);
+	flex-wrap: wrap;
+}
+
+header a{
+	color: #000;
+	transition: 0.3s;
+	text-decoration: none;
+	align-self: center;
+	padding: 10px;
+}
+
+header nav a:nth-child(1){
+	color: #bc1339;
+	font-size: 1.5em;
+	margin-right: auto;
+}
+
+header a:hover{
+	text-shadow: 4px 4px 2px rgba(50, 50, 50, 0.75);
+}
+
+/* ####################################################
+#################### end of header ####################
+#################################################### */
+
+main{
+	width: 100%;
+}
+
+section{
+	display: flex;
+	padding: 0 30px;
+	flex-wrap: wrap;
+}
+
+section header{
+	display: flex;
+	padding: 30px 50px;
+	width: 100%;
+	justify-content: center;
+}
+
+.row{
+	padding-bottom: 10px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+/* ###########################################
+#################### tabs ####################
+########################################### */
+
+.tabs{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.tabs nav{
+	display: flex;
+	width: 100%;
+	border-bottom: 3px solid #0079FF;
+	flex-wrap: wrap;
+}
+
+.tabs nav a{
+	color: #000;
+	text-decoration: none;
+	padding: 10px;
+	margin-right: 2px;
+	transition: 0.3s;
+}
+
+.tabs nav a:hover{
+	text-shadow: 4px 4px 2px rgba(50, 50, 50, 0.75);
+}
+
+.tabs nav a.active{
+	background: #0079FF;
+	color: #fff;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.tab{
+	padding: 20px 0;
+	flex-direction: column;
+	width: 100%;
+	display: none;
+}
+
+.tab.active{
+	display: flex;
+}
+
+.tab .row{
+	justify-content: flex-start;
+	flex-wrap: wrap;
+}
+
+/* ##################################################
+#################### end of tabs ####################
+################################################## */
+
+
+
+/* ############################################
+#################### forms ####################
+############################################ */
+
+form{
+	width: 300px;
+	background: #fff;
+	display: flex;
+	flex-wrap: wrap;
+	border-radius: 5px;
+	overflow: hidden;
+	padding: 20px;
+	border: 1px solid #dfdfdf;
+	box-shadow: 7px 7px 5px 0 rgba(50, 50, 50, 0.75);
+	text-align: center;
+}
+
+form a{
+	text-decoration: none;
+	color: #000;
+}
+
+input{
+	width: 100%;
+	border: 1px solid #dfdfdf;
+	transition: 0.3s;
+	border-radius: 5px;
+	margin: 10px 0;
+	max-width: 300px;
+}
+
+input:focus,
+input:hover{
+	border: 1px solid #0079FF;
+}
+
+input[type="submit"]{
+	border: none;
+	color: #fff;
+}
+
+.tab form{
+	width: 100%;
+	justify-content: center;
+	text-align: left;
+}
+
+.tab form .row{
+	align-items: center;
+}
+
+.tab form .row label{
+	min-width: 150px;
+	max-width: 30%;
+}
+
+/* ###################################################
+#################### end of forms ####################
+################################################### */
+
+
+
+/* ################################################################
+#################### buttons and notifications ####################
+################################################################ */
+
+.notification{
+	padding: 20px;
+	position: absolute;
+	top: 60px;
+	right: 10px;
+	border-radius: 10px;
+	color: #fff;
+}
+
+.button{
+	padding: 10px;
+	border-radius: 5px;
+	text-decoration: none;
+	color: #fff;
+	width: 150px;
+	text-align: center;
+	transition: 0.3s;
+	margin: 10px;
+}
+
+.info{
+	background: rgba(255,98,0,0.9);
+    background: linear-gradient(355deg, rgba(255,98,0,0.9) 0%, rgba(255,126,46,0.9) 100%);
+}
+
+.info:hover,
+.info:focus{
+	background: rgb(255,98,0);
+background: linear-gradient(355deg, rgba(255,98,0,1) 0%, rgba(255,126,46,1) 100%);
+}
+
+.warning{
+    background: rgba(238,0,0,0.9);
+    background: linear-gradient(342deg, rgba(238,0,0,0.9) 0%, rgba(249,17,17,0.9) 100%);
+}
+
+.warning:hover,
+.warning:focus{
+    background: rgb(238,0,0);
+    background: linear-gradient(342deg, rgba(238,0,0,1) 0%, rgba(249,17,17,1) 100%); 
+}
+
+.success{
+	background: rgba(0, 138, 55, 0.9);
+    background: linear-gradient(355deg, rgba(0,138,55,0.9) 0%, rgba(11,195,84,0.9) 100%);
+}
+
+.success:hover,
+.success:focus{
+	background: rgb(0,138,55);
+    background: linear-gradient(355deg, rgba(0,138,55,1) 0%, rgba(11,195,84,1) 100%);
+}
+
+/* #######################################################################
+#################### end of buttons and notifications ####################
+####################################################################### */
+
+
+
+.banner{
+	background: #fbdb65;
+	justify-content: space-around;
+	padding: 40px 0;
+}
+
+
+
+.banner hgroup{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	padding: 20px;
+	flex-wrap: wrap;
+}
+
+.banner hgroup *{
+}
+
+.popup{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(70, 70, 70, 0.7);
+	display: none;
+	top: 0;
+}
+
+.popup-inner{
+	display: flex;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+}
+
+.popup-inner form{
+	align-self: center;
+	position: relative;
+	flex-direction: column;
+	text-align: center;
+}
+
+.popup-inner *{
+	align-self: center
+}
+
+.popup-inner h4{
+	padding-bottom: 10px;
+}
+
+.cancel-btn{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+
+
+
+
+
+
+
+.big-button{
+	height: 150px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.big-button i{
+	font-size: 2em;
+}

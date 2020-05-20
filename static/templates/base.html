@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="{{ app.config['site']['lang'] }}">
+
+  <head>
+    {% block head %}
+      <meta charset="{{ app.config['site']['charset'] }}">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>{{ title }} - {{ app.config['site']['site_name'] }}</title>
+	    <link href="https://fonts.googleapis.com/css2?family=PT+Serif+Caption:ital@0;1&display=swap" rel="stylesheet">
+      <link href="{{ url('static', filename='css/reset.css') }}" rel="stylesheet">
+      <link href="{{ url('static', filename='css/format.css') }}" rel="stylesheet">
+      <link href="{{ url('static', filename='css/main.css') }}" rel="stylesheet">
+      <link href="{{ url('static', filename='css/responsive.css') }}" rel="stylesheet">
+    {% endblock %}
+  </head>
+
+  <body>
+    <header>
+
+      <nav>
+        <a href="/">{{ app.config['site']['site_name'] }}</a>
+
+        {% if not session %}
+        <a href="/login">login</a>
+        <a href="/signup">signup</a>
+        {% else %}
+        <a href="/profile">profile</a>
+        {% endif %}
+
+      </nav>
+
+    </header>
+
+  <main>
+
+      {% block content %}
+      {% endblock %}
+
+    {% if error %}
+        <div class="warning notification">
+            <p>error: {{ error }}</p>
+        </div>
+    {% endif %}
+    
+  </main>
+
+  <footer>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/e659a3d174.js" crossorigin="anonymous"></script>
+	<script src="{{ url('static', filename='js/main.js') }}"></script>
+  </footer>
+
+  </body>
+</html>

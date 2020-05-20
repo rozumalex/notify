@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% set title = 'signup to notify' %}
+
+
+{% block content %}
+    <section>
+
+      <header>
+        <h2>{{ title }}</h2>
+      </header>
+        <div class="row">
+            <form action="/signup" method="post">
+                <input type="email" name="email" placeholder="email">
+                <input type="password" name="password" placeholder="password">
+                <input type="submit" value="signup" class="success">
+            </form>
+        </div>
+    </section>
+{% endblock %}

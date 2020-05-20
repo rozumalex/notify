@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% set title = 'profile' %}
+
+{% block content %}
+    <section>
+
+      <header>
+        <h1>{{ title }}</h1>
+      </header>
+    <div class="tabs">
+
+        <nav class="tabs-nav">
+            <a class="active">personal info</a>
+            <a>privacy and security</a>
+        </nav>
+
+        <div class="tab active">
+
+            <form action="/profile" method="post">
+
+                <div class="row">
+                    <label for="full_name">full name:</label>
+                    <input type="text" maxlength="255" name="full_name" id="full_name"
+                           {% if account.full_name %}
+                           value="{{ account.full_name }}"
+                           {% endif %}>
+                </div>
+
+                <div class="row">
+                    <label for="phone">phone:</label>
+                    <input type="text" maxlength="255"  name="phone" id="phone"
+                           {% if account.phone %}
+                           value="{{ account.phone }}"
+                           {% endif %}>
+                </div>
+
+                <div class="row">
+                    <label>&nbsp;</label>
+                    <input type="submit" value="save changes" class="success">
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="tab">
+            <a id="logout-btn" class="info button">logout</a>
+            <a href="/delete_account" class="warning button">delete account</a>
+        </div>
+      </div>
+    </section>
+
+    <div id="logout-popup" class="popup">
+      <div class="popup-inner">
+        <form action="/logout" method="get">
+        <a class="cancel-btn"><i class="fas fa-times"></i></a>
+        <h4>Logout?</h4>
+        <input type="submit" class="info" value="logout" id="logout">
+       </form>
+      </div>
+    </div>
+
+{% endblock %}
