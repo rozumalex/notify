@@ -2,8 +2,8 @@ import aiohttp_jinja2
 from aiohttp import web
 from aiohttp_session import get_session
 
-from auth.models import Account
-from notify import db
+from auth import db
+from auth.exceptions import AccountNotFound
 
 
 async def request_account_middleware(app, handler):
@@ -12,7 +12,10 @@ async def request_account_middleware(app, handler):
         request.account = None
         account_id = request.session.get('account_id')
         if account_id is not None:
-            request.account = await db.get_account_by_id(app.pool, account_id)
+            try:
+                request.account = await db.get_account_by_id(app.pool, account_id)
+            except AccountNotFound:
+                request.session.pop('account_id')
         return await handler(request)
     return middleware
 

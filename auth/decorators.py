@@ -15,3 +15,12 @@ def anonymous_required(func):
             raise redirect(request, 'index')
         return await func(request, *args, **kwargs)
     return wrapped
+
+
+def db_connector(func):
+    """Декоратор перехватывает пул и отдает соединение"""
+    async def wrapped(pool, request, *args, **kwargs):
+        async with pool.acquire() as connection:
+            async with connection.transaction():
+                return await func(connection, request, *args, **kwargs)
+    return wrapped

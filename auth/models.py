@@ -4,7 +4,9 @@ import re
 
 from auth.exceptions import EmailValidationError, PasswordValidationError, FullNameValidationError,\
     PhoneValidationError, InvalidPasswordError, ConfirmationError
-from notify import db
+from auth import db
+from notify import db as notify_db
+
 
 class Account:
 

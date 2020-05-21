@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 
-{% set title = '403. Forbridden' %}
+{% set title = '403. Forbridden' 
+
+{% block header %}
+{% endblock %}
+
 
 {% block content %}
     <section>
@@ -10,7 +14,7 @@
       </header>
 
             <div class="row">
-                <h2><a href="/">Go to main page</a></h2>
+                <h2><a href="/">Go to {{app.config['site']['site_name']}} main page</a></h2>
             </div>
 
     </section>

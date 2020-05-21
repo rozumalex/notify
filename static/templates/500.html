@@ -2,6 +2,9 @@
 
 {% set title = '500. Iternal server error.' %}
 
+{% block header %}
+{% endblock %}
+
 {% block content %}
     <section>
 
@@ -10,7 +13,7 @@
       </header>
 
             <div class="row">
-                <h2><a href="/">Go to main page</a></h2>
+                <h2><a href="/">Go to {{app.config['site']['site_name']}} main page</a></h2>
             </div>
 
     </section>

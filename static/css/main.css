@@ -9,7 +9,6 @@ body{
 
 header{
 	display: flex;
-	align-content: center;
 	width: 100%;
 }
 
@@ -18,7 +17,6 @@ header nav{
 	width: 100%;
 	padding: 0 10px;
 	box-shadow: 0 10px 5px 0 rgba(50, 50, 50, 0.5);
-	flex-wrap: wrap;
 }
 
 header a{
@@ -81,7 +79,6 @@ section header{
 	display: flex;
 	width: 100%;
 	border-bottom: 3px solid #0079FF;
-	flex-wrap: wrap;
 }
 
 .tabs nav a{
@@ -166,6 +163,14 @@ input[type="submit"]{
 	color: #fff;
 }
 
+input[type="checkbox"]{
+	width: auto;
+	margin: 0 10px;
+}
+
+form label{
+}
+
 .tab form{
 	width: 100%;
 	justify-content: center;
@@ -222,13 +227,16 @@ input[type="submit"]{
 background: linear-gradient(355deg, rgba(255,98,0,1) 0%, rgba(255,126,46,1) 100%);
 }
 
-.warning{
+.warning,
+.False{
     background: rgba(238,0,0,0.9);
     background: linear-gradient(342deg, rgba(238,0,0,0.9) 0%, rgba(249,17,17,0.9) 100%);
 }
 
 .warning:hover,
-.warning:focus{
+.warning:focus,
+.False:hover,
+.False:focus{
     background: rgb(238,0,0);
     background: linear-gradient(342deg, rgba(238,0,0,1) 0%, rgba(249,17,17,1) 100%); 
 }
@@ -243,6 +251,17 @@ background: linear-gradient(355deg, rgba(255,98,0,1) 0%, rgba(255,126,46,1) 100%
 	background: rgb(0,138,55);
     background: linear-gradient(355deg, rgba(0,138,55,1) 0%, rgba(11,195,84,1) 100%);
 }
+
+.True{
+	background: rgba(0,89,187,0.9);
+    background: linear-gradient(319deg, rgba(0,89,187,0.9) 0%, rgba(0,121,255,0.9) 100%);
+}
+
+.True:hover{
+	background: rgb(0,89,187);
+    background: linear-gradient(319deg, rgba(0,89,187,1) 0%, rgba(0,121,255,1) 100%);
+}
+
 
 /* #######################################################################
 #################### end of buttons and notifications ####################
@@ -304,4 +323,12 @@ background: linear-gradient(355deg, rgba(255,98,0,1) 0%, rgba(255,126,46,1) 100%
 	position: absolute;
 	top: 10px;
 	right: 10px;
+}
+
+.tab.tasks{
+	flex-direction: row;
+}
+
+.big-button{
+	height: 100px;
 }

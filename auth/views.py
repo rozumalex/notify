@@ -6,8 +6,8 @@ from auth.decorators import login_required, anonymous_required
 from auth.tools import redirect
 from auth.exceptions import ValidationError, LoginError, AccountNotFound
 
-from notify import db
-
+from auth import db
+from notify import db as notify_db
 
 class Signup(web.View):
 
@@ -30,6 +30,7 @@ class Signup(web.View):
             account_id = await account.create(self.app.pool)
         except Exception as e:
             return {'session': self.session, 'error': e}
+        await notify_db.create_tasks_table(self.app.pool, account_id)
 
         self.session['account_id'] = account_id
         raise redirect(self, 'index')

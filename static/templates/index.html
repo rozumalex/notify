@@ -16,8 +16,11 @@
                 <a class="active">my tasks</a>
             </nav>
 
-            <div class="tab active">
+            <div class="tab active tasks">
         		<a href="/new_task" class="success button big-button">new task</a>
+                 {% for task in tasks %}
+                    <a href="/task/{{ task.id }}" class="{{ task.enabled }} button big-button">{{ task.name }}</a>
+                 {% endfor %}
             </div>
             
         </div>

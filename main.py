@@ -9,7 +9,7 @@ import jinja2
 import aiohttp_jinja2
 
 from notify.settings import config, SECRET_KEY, TEMPLATES_DIR
-from notify.db import init_pool
+from auth.db import init_pool
 
 from auth.middlewares import request_account_middleware, error_middleware
 

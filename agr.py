@@ -1,8 +1,9 @@
-import requests
+import feedparser
 from pprint import pprint
-
-url = 'https://twitter.com/interpol_hq'
+from time import sleep
 url = 'https://onliner.by/feed'
 
-response = requests.get(url)
-pprint(response.text)
+result = feedparser.parse(url)
+for entry in result.entries:
+    print(entry.title)
+    print(entry.summary)
