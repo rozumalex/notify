@@ -12,6 +12,6 @@ def login_required(func):
 def anonymous_required(func):
     async def wrapped(request, *args, **kwargs):
         if request.account:
-             raise redirect(request, 'profile')
+             raise redirect(request, 'index')
         return await func(request, *args, **kwargs)
     return wrapped
