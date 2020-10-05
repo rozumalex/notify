@@ -9,6 +9,5 @@ class Task:
         self.enabled = True if data.get('enabled') else False
         self.account_id = data['account_id']
 
-
     async def create(self, pool):
         return await db.create_task(pool, self)

@@ -17,7 +17,8 @@ async def create_tasks_table(conn, account_id):
 
 async def create_task(conn, task: Task):
     await conn.execute(f'''
-        INSERT INTO id_{task.account_id}_tasks(name, enabled) VALUES($1, $2) RETURNING *
+        INSERT INTO id_{task.account_id}_tasks(name, enabled) VALUES($1, $2)
+RETURNING *
     ''', task.name, task.enabled)
 
 

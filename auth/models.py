@@ -2,10 +2,10 @@ import hashlib
 import os
 import re
 
-from auth.exceptions import EmailValidationError, PasswordValidationError, FullNameValidationError,\
-    PhoneValidationError, InvalidPasswordError, ConfirmationError
+from auth.exceptions import EmailValidationError, PasswordValidationError,\
+    FullNameValidationError, PhoneValidationError, InvalidPasswordError,\
+    ConfirmationError
 from auth import db
-from notify import db as notify_db
 
 
 class Account:
@@ -17,7 +17,8 @@ class Account:
         self._password = self._generate_hash(data['password'])
         self._full_name = data['full_name'] if 'full_name' in data else None
         self._phone = data['phone'] if 'phone' in data else None
-        self.registration_date = data['registration_date'] if 'registration_date' in data else None
+        self.registration_date = data['registration_date']\
+            if 'registration_date' in data else None
 
     @property
     def email(self) -> str:
@@ -69,7 +70,9 @@ class Account:
     @staticmethod
     def _validate_password(password: str) -> None:
         if type(password) != bytes:
-            if not (len(password) > 10 and all(re.search(symbol, password) for symbol in ('[A-Z]', '[0-9]', '[a-z]'))):
+            if not (len(password) > 10 and
+                    all(re.search(symbol, password) for symbol in (
+                            '[A-Z]', '[0-9]', '[a-z]'))):
                 raise PasswordValidationError
 
     @staticmethod

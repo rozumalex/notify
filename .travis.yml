@@ -1,0 +1,29 @@
+language: python
+
+dist: focal
+
+python:
+  - "3.8"
+
+install:
+  - pip install poetry
+  - poetry install
+
+services:
+  - postgresql
+
+before_script:
+  - psql -c "CREATE DATABASE test;" -U postgres
+  - psql -c "CREATE USER test with encrypted password 'test';" -U postgres
+  - psql -c "GRANT ALL PRIVILEGES ON DATABASE test TO test;" -U postgres
+  - psql -c "ALTER USER test createdb;" -U postgres
+
+env:
+  global:
+    - DEBUG=on
+    - SECRET_KEY="dev"
+    - DATABASE_URL=psql://test:test@127.0.0.1:5432/test
+
+
+script:
+  - flake8

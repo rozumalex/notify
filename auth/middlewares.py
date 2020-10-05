@@ -13,7 +13,8 @@ async def request_account_middleware(app, handler):
         account_id = request.session.get('account_id')
         if account_id is not None:
             try:
-                request.account = await db.get_account_by_id(app.pool, account_id)
+                request.account = await db.get_account_by_id(app.pool,
+                                                             account_id)
             except AccountNotFound:
                 request.session.pop('account_id')
         return await handler(request)

@@ -1,5 +1,6 @@
 from auth.views import Signup, Login, Logout, Profile
 
+
 def setup_routes(app):
     app.router.add_get('/signup', Signup.get, name='signup')
     app.router.add_post('/signup', Signup.post)

@@ -9,6 +9,7 @@ from auth.exceptions import ValidationError, LoginError, AccountNotFound
 from auth import db
 from notify import db as notify_db
 
+
 class Signup(web.View):
 
     @anonymous_required
@@ -35,6 +36,7 @@ class Signup(web.View):
         self.session['account_id'] = account_id
         raise redirect(self, 'index')
 
+
 class Login(web.View):
 
     @anonymous_required
@@ -48,7 +50,8 @@ class Login(web.View):
         data = await self.post()
 
         try:
-            account = await db.get_account_by_email(self.app.pool, data['email'])
+            account = await db.get_account_by_email(self.app.pool,
+                                                    data['email'])
         except LoginError as e:
             return {'session': self.session, 'error': e}
 
@@ -59,6 +62,7 @@ class Login(web.View):
 
         self.session['account_id'] = account.id
         raise redirect(self, 'index')
+
 
 class Logout(web.View):
 
@@ -82,9 +86,10 @@ class Profile(web.View):
         try:
             await self.account.update_personal_info(self.app.pool, data)
         except ValidationError as e:
-            return {'session': self.session, 'account': self.account, 'error': e}
+            return {'session': self.session,
+                    'account': self.account,
+                    'error': e}
         raise redirect(self, 'profile')
-
 
     @login_required
     @aiohttp_jinja2.template('delete_account.html')
@@ -97,7 +102,9 @@ class Profile(web.View):
         try:
             await self.account.delete(self.app.pool, data)
         except LoginError as e:
-            return {'session': self.session, 'account': self.account, 'error': e}
+            return {'session': self.session,
+                    'account': self.account,
+                    'error': e}
         else:
             self.session.pop('account_id')
             raise redirect(self, 'login')
@@ -105,7 +112,9 @@ class Profile(web.View):
     @aiohttp_jinja2.template('profile_view.html')
     async def view(self):
         try:
-            account = await db.get_account_by_id(self.app.pool, self.match_info['id'])
+            account = await db.get_account_by_id(self.app.pool,
+                                                 self.match_info['id'])
         except AccountNotFound as e:
+            print(e)
             raise web.HTTPNotFound
         return {'session': self.session, 'account': account}

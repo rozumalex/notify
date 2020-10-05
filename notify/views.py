@@ -7,6 +7,7 @@ from notify import db
 from auth.decorators import login_required
 from auth.tools import redirect
 
+
 class Index(web.View):
 
     @aiohttp_jinja2.template('index.html')
@@ -21,7 +22,6 @@ class Index(web.View):
 
 
 class Tasks(web.View):
-
 
     @login_required
     @aiohttp_jinja2.template('new_task.html')
