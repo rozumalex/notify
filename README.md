@@ -1,4 +1,4 @@
-# Wallet
+# Notify
 
 [![Build Status](https://travis-ci.org/rozumalex/notify.svg?branch=master)](https://travis-ci.org/github/rozumalex/notify)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/rozumalex/notify/blob/master/LICENSE)
