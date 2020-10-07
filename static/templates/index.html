@@ -5,26 +5,12 @@
 
 {% block content %}
     {% if session %}
-    <section>
 
-      <header>
-        <h1>{{ title }}</h1>
-      </header>
-        <div class="tabs">
-
-            <nav class="tabs-nav">
-                <a class="active">my tasks</a>
-            </nav>
-
-            <div class="tab active tasks">
-        		<a href="/new_task" class="success button big-button">new task</a>
-                 {% for task in tasks %}
-                    <a href="/task/{{ task.id }}" class="{{ task.enabled }} button big-button">{{ task.name }}</a>
-                 {% endfor %}
-            </div>
-            
-        </div>
-    </section>
+        <section>
+       <hgroup>
+           <h2>main page</h2>
+      </hgroup>
+        </section>
 
     {% else %}
     <section class="banner">
@@ -34,10 +20,18 @@
         <h3>Collect your data</h3>
       </hgroup>
 
-            <form action="/signup" method="post">
+            <form id="signup-form" action="/signup" method="post">
+                <div class="row">
                 <input type="email" name="email" placeholder="email">
+                </div>
+
+                <div class="row">
                 <input type="password" name="password" placeholder="password">
+                </div>
+
+                <div class="row">
                 <input type="submit" value="signup" class="success">
+                </div>
             </form>
     </section>
     {% endif %}

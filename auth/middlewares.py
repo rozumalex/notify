@@ -50,13 +50,12 @@ def create_error_middleware(overrides):
             override = overrides.get(e.status)
             if override:
                 return await override(request)
-
             raise
 
     return error_middleware
 
 
-error_middleware = create_error_middleware({
+error_middlewares = create_error_middleware({
     403: handle_403,
     404: handle_404,
     500: handle_500

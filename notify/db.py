@@ -1,24 +1,7 @@
-from datetime import datetime
-
-from notify.models import Task
-
-
-async def create_tasks_table(conn, account_id):
-    table_name = f'id_{account_id}_tasks'
+async def create_task(conn, task):
     await conn.execute(f'''
-            CREATE TABLE {table_name}(
-                id serial PRIMARY KEY,
-                name text UNIQUE,
-                enabled boolean
-            )
-        ''')
-    print(f'{datetime.now().strftime("%H:%M")} table {table_name} created')
-
-
-async def create_task(conn, task: Task):
-    await conn.execute(f'''
-        INSERT INTO id_{task.account_id}_tasks(name, enabled) VALUES($1, $2)
-RETURNING *
+        INSERT INTO id_{task.account_id}_tasks(name, enabled) VALUES(
+$1, $2) RETURNING *
     ''', task.name, task.enabled)
 
 
@@ -29,9 +12,21 @@ async def get_all_tasks(conn, account_id):
     return result
 
 
-async def delete_task(conn, task_id):
-    pass
+async def get_task_by_id(conn, task):
+    result = await conn.fetchrow(f'''
+        SELECT * FROM id_{task.account_id}_tasks WHERE id=$1''', task.id)
+    return result
 
 
-async def update_task(conn, task_id):
-    pass
+async def delete_task(conn, task):
+    await conn.execute(
+        f'''DELETE FROM id_{task.account_id}_tasks WHERE id = $1''', task.id)
+
+
+async def update_task(conn, task):
+    await conn.execute(
+        f'''UPDATE id_{task.account_id}_tasks SET name = $2,
+enabled = $3 WHERE id = $1''',
+        task.id, task.name, task.enabled)
+    print(f'''UPDATE id_{task.account_id}_tasks SET name = $2,
+enabled = $3 WHERE id = $1''', task.id, task.name, task.enabled)

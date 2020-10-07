@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% set title = 'main' %}
+
+{% block content %}
+    <section>
+
+      <header>
+        <h1>{{ title }}</h1>
+      </header>
+        <div class="tabs">
+
+            <nav class="tabs-nav">
+                <a class="active">my tasks</a>
+            </nav>
+
+            <div class="tab active tasks">
+        		<a href="/tasks/new" class="success button big-button">new task</a>
+                 {% for task in tasks %}
+                    <a href="/tasks/{{ task.id }}" class="{{ task.enabled }} button big-button">{{ task.name }}</a>
+                 {% endfor %}
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

@@ -3,11 +3,12 @@ import aiohttp_jinja2
 
 from auth.models import Account
 from auth.decorators import login_required, anonymous_required
-from auth.tools import redirect
 from auth.exceptions import ValidationError, LoginError, AccountNotFound
-
 from auth import db
-from notify import db as notify_db
+
+from tools import redirect
+
+from db import create_tasks_table
 
 
 class Signup(web.View):
@@ -31,7 +32,11 @@ class Signup(web.View):
             account_id = await account.create(self.app.pool)
         except Exception as e:
             return {'session': self.session, 'error': e}
-        await notify_db.create_tasks_table(self.app.pool, account_id)
+
+        try:
+            await create_tasks_table(self.app.pool, account_id)
+        except Exception as e:
+            return {'session': self.session, 'error': e}
 
         self.session['account_id'] = account_id
         raise redirect(self, 'index')
@@ -114,7 +119,6 @@ class Profile(web.View):
         try:
             account = await db.get_account_by_id(self.app.pool,
                                                  self.match_info['id'])
-        except AccountNotFound as e:
-            print(e)
+        except AccountNotFound:
             raise web.HTTPNotFound
         return {'session': self.session, 'account': account}

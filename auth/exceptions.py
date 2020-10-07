@@ -57,7 +57,7 @@ class EmailRegistrationError(BaseException):
         super().__init__(args, kwargs)
 
     def __str__(self):
-        return 'email is used'
+        return 'email is taken'
 
 
 class LoginError(BaseException):

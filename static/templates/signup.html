@@ -10,10 +10,16 @@
         <h2>{{ title }}</h2>
       </header>
         <div class="row">
-            <form action="/signup" method="post">
+            <form id="signup-form" action="/signup" method="post">
+                <div class="row">
                 <input type="email" name="email" placeholder="email">
+                </div>
+                <div class="row">
                 <input type="password" name="password" placeholder="password">
+                </div>
+                <div class="row">
                 <input type="submit" value="signup" class="success">
+                </div>
             </form>
         </div>
     </section>

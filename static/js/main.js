@@ -11,8 +11,8 @@ $(function() {
   $("#logout-btn").click(function() {
     $("#logout-popup").fadeIn(300);  
   });
-  $("#destroy-btn").click(function() {
-    $("#destroy-popup").fadeIn(300);  
+  $("#new-task-btn").click(function() {
+    $("#new-task-popup").fadeIn(300);  
   });
   $(".cancel-btn").click(function() {
     $(".popup").fadeOut(300);

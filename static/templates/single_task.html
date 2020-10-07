@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% set title = 'profile' %}
+{% set title = 'Task: ' + task.name %}
 
 {% block content %}
     <section>
@@ -11,43 +11,39 @@
     <div class="tabs">
 
         <nav class="tabs-nav">
-            <a class="active">personal info</a>
-            <a>privacy and security</a>
+            <a class="active">task settings</a>
         </nav>
 
         <div class="tab active">
 
-            <form action="/profile" method="post">
+            <form method="post">
 
                 <div class="row">
-                    <label for="full_name">full name:</label>
-                    <input type="text" maxlength="255" name="full_name" id="full_name"
-                           {% if account.full_name %}
-                           value="{{ account.full_name }}"
+                    <label for="name">task name:</label>
+                    <input type="text" maxlength="255" name="name" id="name"
+                           {% if task.name %}
+                           value="{{ task.name }}"
                            {% endif %}>
+                    <input type="checkbox" name="enabled" id="enabled" {% if task.enabled %}checked{% endif %}>
+                    <label for="enabled">enable task</label>
+                    <input type="hidden" name="account_id" value={{ account.id }}>
+                    <input type="hidden" name="id" value={{ task.id }}>
                 </div>
 
                 <div class="row">
-                    <label for="phone">phone:</label>
-                    <input type="text" maxlength="255"  name="phone" id="phone"
-                           {% if account.phone %}
-                           value="{{ account.phone }}"
-                           {% endif %}>
+
                 </div>
 
                 <div class="row">
                     <label>&nbsp;</label>
                     <input type="submit" value="save changes" class="success">
-                </div>
+                <a href="/tasks/{{ task.id }}/delete" class="warning button">Delete task</a>
 
+                </div>
             </form>
 
         </div>
 
-        <div class="tab">
-            <a id="logout-btn" class="info button">logout</a>
-            <a href="/delete_account" class="warning button">delete account</a>
-        </div>
       </div>
     </section>
 
